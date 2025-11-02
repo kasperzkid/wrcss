@@ -1,0 +1,2993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worabe Secondary High School - Excellence in Education</title>
+    <meta name="description" content="Worabe Secondary High School provides quality education, shaping future leaders through academic excellence and character development.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #1a73e8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            scroll-behavior: smooth;
+        }
+        
+        .school-nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .mobile-menu {
+            background: #ffffff;
+            border-left: 1px solid #e1e4e8;
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Scroll animations */
+        .scroll-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-up.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-right {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scroll-left {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .nav-slide-in {
+            animation: navSlideIn 0.6s ease-out;
+        }
+        
+        @keyframes navSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .donate-btn {
+            background: var(--secondary);
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+        }
+        
+        .donate-btn:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .enrol-btn-hero {
+            background: var(--primary);
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enrol-btn-hero:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .enrol-btn-hero:hover .arrow {
+            transform: translateX(5px);
+        }
+        
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-shadow {
+            box-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+            border: 1px solid #e1e4e8;
+        }
+        
+        .graphic-wave {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(180deg, transparent 0%, #f8fafc 100%);
+        }
+        
+        /* Custom styles for the Home section image */
+        .home-image-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .home-image {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+        }
+        
+        /* About section styles */
+        .about-text {
+            max-height: 300px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .about-text.expanded {
+            max-height: 2000px;
+        }
+        
+        .read-more-btn {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+            padding: 0.5rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            width: auto;
+            height: 40px;
+            line-height: 24px;
+            margin-top: 1.5rem;
+        }
+        
+        .read-more-btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(26, 115, 232, 0.2);
+        }
+        
+        /* School stats divider lines */
+        .stat-divider {
+            position: relative;
+        }
+        
+        .stat-divider:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #d1d5db, transparent);
+        }
+        
+        /* Fade-in animation for page content */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Pulse animation for stats */
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Bounce animation for buttons */
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Decorative elements */
+        .decoration-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            top: 10%;
+            left: 5%;
+        }
+        
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--secondary);
+            bottom: 15%;
+            right: 10%;
+        }
+        
+        /* Simple section divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 0 auto;
+            width: 80%;
+        }
+        
+        /* About section graphic */
+        .about-graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+        
+        .about-graphic:hover {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+        }
+        
+        /* Active nav link */
+        .nav-link.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Staff Section Styles */
+        .staff-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 4rem 0;
+        }
+        
+        .department-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .department-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .department-card.active {
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+        
+        .department-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+        
+        .department-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .department-modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 101;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: #1d4ed8;
+            transform: rotate(90deg);
+        }
+        
+        .department-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Department-specific colors */
+        .english { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .math { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .biology { background: linear-gradient(135deg, #10b981, #059669); }
+        .chemistry { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .physics { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .economic { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .history { background: linear-gradient(135deg, #d97706, #b45309); }
+        .geography { background: linear-gradient(135deg, #059669, #047857); }
+        .it { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .amharic { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .hpe { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .civic { background: linear-gradient(135deg, #84cc16, #65a30d); }
+        .agriculture { background: linear-gradient(135deg, #a855f7, #9333ea); }
+        
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+        }
+        
+        .modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+        
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .faculty-card {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faculty-card:hover {
+            background: #eff6ff;
+            transform: translateY(-3px);
+        }
+        
+        .faculty-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .faculty-role {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 0.75rem;
+        }
+        
+        /* News Section Styles */
+        .news-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+        }
+        
+        .news-card {
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .news-date {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .read-more-news {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more-news:hover {
+            color: #1d4ed8;
+            transform: translateX(4px);
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .news-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+        
+        .news-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Category colors */
+        .category-academic { background: #dbeafe; color: #1e40af; }
+        .category-events { background: #fef3c7; color: #92400e; }
+        .category-sports { background: #dcfce7; color: #166534; }
+        .category-achievements { background: #f3e8ff; color: #7e22ce; }
+        .category-announcements { background: #fef7cd; color: #854d0e; }
+        
+        /* Gallery Section Styles - IMPROVED */
+        .gallery-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+        }
+        
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 10px;
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            grid-row-end: span 26;
+        }
+        
+        .gallery-item.tall {
+            grid-row-end: span 32;
+        }
+        
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-info {
+            color: white;
+        }
+        
+        .gallery-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .gallery-date {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        .gallery-filter-btn {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-filter-btn:hover, .gallery-filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 101;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+        
+        .lightbox-close:hover {
+            background: #1d4ed8;
+            transform: rotate(90deg);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 101;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .lightbox-prev {
+            left: 2rem;
+        }
+        
+        .lightbox-next {
+            right: 2rem;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+        
+        .lightbox-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 0 0 0.5rem 0.5rem;
+            color: white;
+        }
+        
+        .lightbox-counter {
+            position: absolute;
+            top: -3rem;
+            left: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Contact Section Styles - IMPROVED */
+        .contact-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+        }
+        
+        .contact-info-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(26, 115, 232, 0.2);
+        }
+        
+        /* FAQ Section Styles */
+        .faq-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f9fafb;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-height: 95vh;
+                margin: 1rem;
+            }
+            
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .masonry-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+            
+            .lightbox-prev {
+                left: 1rem;
+            }
+            
+            .lightbox-next {
+                right: 1rem;
+            }
+            
+            .gallery-item.wide {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Modern Professional Navigation -->
+    <nav class="sticky-nav school-nav nav-slide-in" aria-label="Main navigation">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo and School Name -->
+                <div class="flex items-center space-x-3">
+                    <a href="#home" class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-sm" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h1 class="font-bold text-gray-900 text-lg">Worabe Secondary</h1>
+                            <p class="text-xs text-gray-500">High School</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation - No connectors between items -->
+                <div class="hidden md:flex items-center space-x-4 flex-1 justify-center ml-8">
+                    <!-- Home First and Highlighted -->
+                    <a href="#home" class="nav-link px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition-colors">
+                        Home
+                    </a>
+                    
+                    <div class="relative group">
+                        <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors flex items-center">
+                            About Us
+                            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500" aria-hidden="true"></i>
+                        </a>
+                        <div class="absolute left-0 mt-1 w-48 bg-white rounded-md dropdown-shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-1">
+                                <a href="#history" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Our History</a>
+                                <a href="#mission" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Mission & Vision</a>
+                                <a href="#leadership" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">School Leadership</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <a href="#staff" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors flex items-center">
+                            Staff
+                            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500" aria-hidden="true"></i>
+                        </a>
+                        <div class="absolute left-0 mt-1 w-56 bg-white rounded-md dropdown-shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-1">
+                                <a href="#teachers" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Teachers</a>
+                                <a href="#administration" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Administration</a>
+                                <a href="#support-staff" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Support Staff</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#news" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">News</a>
+                    
+                    <a href="#gallery" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Gallery</a>
+                     <a href="#faq" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">FAQ</a>
+            
+                    <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Contact</a>
+                    
+                       </div>
+
+                
+                <div class="hidden md:flex items-center space-x-3">
+                    <button class="donate-btn px-6 py-2.5 text-sm font-semibold text-white rounded-lg">
+                        Donate
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="Open mobile menu">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu - Slides from Right -->
+    <div id="mobileMenu" class="md:hidden mobile-menu fixed top-0 right-0 bottom-0 w-80 transform translate-x-full transition-transform duration-300 z-50" aria-hidden="true">
+        <div class="h-full flex flex-col">
+            <!-- Mobile Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-sm" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-gray-900">Worabe Secondary</h1>
+                        <p class="text-xs text-gray-500">High School</p>
+                    </div>
+                </div>
+                <button id="closeMobileMenu" class="p-2 text-gray-500 hover:text-gray-700" aria-label="Close mobile menu">
+                    <i class="fas fa-times text-lg" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation - Correct Order -->
+            <div class="flex-1 overflow-y-auto py-4">
+                <div class="space-y-1 px-4">
+                    <!-- Home First and Highlighted in Mobile -->
+                    <a href="#home" class="nav-link-mobile block py-3 px-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
+                        <i class="fas fa-home mr-3" aria-hidden="true"></i> Home
+                    </a>
+                    
+                    <a href="#about" class="nav-link-mobile block py-3 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-info-circle mr-3" aria-hidden="true"></i> About Us
+                    </a>
+                    
+                    <a href="#staff" class="nav-link-mobile block py-3 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-users mr-3" aria-hidden="true"></i> Staff
+                    </a>
+                    
+                    <!-- News After Staff in Mobile -->
+                    <a href="#news" class="nav-link-mobile block py-3 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-newspaper mr-3" aria-hidden="true"></i> News
+                    </a>
+                    
+                    <a href="#gallery" class="nav-link-mobile block py-3 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-images mr-3" aria-hidden="true"></i> Gallery
+                    </a>
+                     <a href="#faq" class="nav-link-mobile block py-3 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-question-circle mr-3" aria-hidden="true"></i> FAQ
+                    </a>
+                    
+                    <a href="#contact" class="nav-link-mobile block py-3 px-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-envelope mr-3" aria-hidden="true"></i> Contact
+                    </a>
+                    
+                   
+                </div>
+
+                <!-- Mobile Action Buttons (No Icons) -->
+                <div class="mt-8 px-4 space-y-3">
+                    <button class="donate-btn w-full py-3 text-sm font-semibold text-white rounded-lg">
+                        Donate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Content Section -->
+    <section id="home" class="relative overflow-hidden py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 fade-in">
+        <!-- Wave Graphic -->
+        <div class="graphic-wave"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Welcome Text -->
+                <div class="md:w-1/2 scroll-right">
+                    <div class="mb-6">
+                        <span class="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
+                            Welcome to Excellence
+                        </span>
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                            Shaping Future Leaders Through 
+                            <span class="text-blue-600">Quality Education</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            At Worabe Secondary High School, we are committed to providing exceptional education 
+                            that nurtures intellectual growth, character development, and lifelong learning. 
+                            Join our community of passionate educators and motivated students.
+                        </p>
+                    </div>
+                    
+                    <!-- Stats with divider lines -->
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="text-center pulse-animation stat-divider">
+                            <div class="text-2xl font-bold text-blue-600 mb-1">2,000+</div>
+                            <div class="text-sm text-gray-500">Students</div>
+                        </div>
+                        <div class="text-center pulse-animation stat-divider">
+                            <div class="text-2xl font-bold text-green-600 mb-1">55%</div>
+                            <div class="text-sm text-gray-500">Success Rate</div>
+                        </div>
+                        <div class="text-center pulse-animation">
+                            <div class="text-2xl font-bold text-purple-600 mb-1">45+</div>
+                            <div class="text-sm text-gray-500">Qualified Teachers</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enrol Button with Right Arrow (Smaller) -->
+                    <div class="flex">
+                        <button class="enrol-btn-hero px-6 py-3 text-base font-semibold text-white rounded-lg flex items-center justify-center bounce-animation">
+                            Enrol Now
+                            <i class="fas fa-arrow-right arrow ml-3" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Centered Image Section -->
+                <div class="md:w-1/2 scroll-left">
+                    <div class="home-image-container">
+                        <div class="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-4 shadow-2xl">
+                            <img 
+                                src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=869" 
+                                alt="Worabe Secondary High School Students"
+                                class="home-image"
+                                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDQwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgMjUwTDI1MCAzMDBMMzAwIDI1MEwyNTAgMjAwTDIwMCAyNTBaIiBmaWxsPSIjOTlBM0FFIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMzUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNkI3MjgwIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0iQXJpYWwiPldvcmFiZSBTZWNvbmRhcnk8L3RleHQ+Cjwvc3ZnPgo='"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple section divider -->
+    <div class="section-divider"></div>
+
+    <!-- About Us Section with White Background (removed blue gradient) -->
+    <section id="about" class="py-16 bg-white relative">
+        <!-- Decorative Circles -->
+        <div class="decoration-circle circle-1"></div>
+        <div class="decoration-circle circle-2"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 scroll-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our School Story</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">A journey of excellence, growth, and community impact</p>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <!-- Main content with text on right and image on left -->
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <!-- Image on the left -->
+                <div class="md:w-1/2 scroll-right">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-4 shadow-xl">
+                        <img 
+                            src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=500&q=80" 
+                            alt="Worabe Secondary School Campus"
+                            class="w-full h-[500px] object-cover rounded-xl"
+                            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDgwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00MDAgMjUwTDUwMCAzMDBMNjAwIDI1MEw1MDAgMjAwTDQwMCAyNTBaIiBmaWxsPSIjOTlBM0FFIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iMzUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNkI3MjgwIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0iQXJpYWwiPldvcmFiZSBTZWNvbmRhcnkgU2Nob29sPC90ZXh0Pgo8L3N2Zz4K'"
+                        >
+                    </div>
+                </div>
+                
+                <!-- Text content on the right with button at bottom -->
+                <div class="md:w-1/2 scroll-left flex flex-col">
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">From Humble Beginnings to Educational Excellence</h3>
+                        <div class="about-text" id="aboutText">
+                            <p class="text-gray-600 mb-4">In the heart of our community, Worabe Secondary School began its journey in 1985 with just three classrooms and a vision to provide quality education to local children. What started as a small initiative has now grown into one of the region's most respected educational institutions.</p>
+                            
+                            <p class="text-gray-600 mb-4">Our founders, a group of dedicated educators and community leaders, believed that every child deserved access to quality education regardless of their background. They pooled their resources, secured a small plot of land, and with the help of volunteers, constructed the first classrooms. The school opened its doors to 47 students in its inaugural year.</p>
+                            
+                            <p class="text-gray-600 mb-4">Over the decades, we've witnessed countless success stories - students who arrived with dreams and left with the tools to achieve them. Our alumni now serve as doctors, engineers, teachers, and community leaders across the country and beyond. Many return to share their experiences and mentor current students, creating a cycle of inspiration and support.</p>
+                            
+                            <p class="text-gray-600 mb-4">The school's expansion in 2005 marked a significant milestone, adding science laboratories, a library, and sports facilities. This growth was made possible through the dedication of our staff, support from the community, and partnerships with educational organizations. We've continued to upgrade our facilities, incorporating technology into our classrooms while maintaining our commitment to personalized education.</p>
+                            
+                            <p class="text-gray-600 mb-4">Our curriculum has evolved to meet the changing needs of students and society. While maintaining strong foundations in core subjects, we've introduced programs in technology, entrepreneurship, and environmental studies. Our extracurricular activities include sports, arts, debate clubs, and community service projects, ensuring students develop holistically.</p>
+                            
+                            <p class="text-gray-600 mb-6">Today, Worabe Secondary stands as a beacon of hope and opportunity, continuing our founders' mission to empower young minds through education. We remain committed to our core values while adapting to the changing educational landscape. Our teachers participate in ongoing professional development, and we maintain small class sizes to ensure each student receives individual attention.</p>
+                            
+                            <!-- Additional about information -->
+                            <div class="mt-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-3">Our Guiding Philosophy</h4>
+                                <p class="text-gray-600 mb-4">We believe education extends beyond textbooks - it's about nurturing curious minds, building character, and preparing students for life's challenges. Our holistic approach balances academic rigor with personal development. We emphasize critical thinking, creativity, and collaboration, skills essential for success in the 21st century.</p>
+                                
+                                <h4 class="text-xl font-semibold text-gray-800 mb-3">Community Impact</h4>
+                                <p class="text-gray-600 mb-4">Beyond our campus, we actively engage with the local community through outreach programs, adult education classes, and environmental initiatives, reinforcing our role as a cornerstone of community development. Our students participate in community service projects, learning the value of civic responsibility while making tangible contributions to our neighborhood.</p>
+                                
+                                <h4 class="text-xl font-semibold text-gray-800 mb-3">Looking to the Future</h4>
+                                <p class="text-gray-600">As we look ahead, we're excited about plans to further expand our facilities, introduce new technology programs, and strengthen our international partnerships. Our vision is to become a model for secondary education in our region, combining academic excellence with character development and community engagement.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Read More button at the bottom of the text section -->
+                    <div class="mt-auto">
+                        <button class="read-more-btn" id="readMoreBtn">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff" class="staff-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Academic Departments</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore our dedicated faculty members across all academic disciplines</p>
+                <div class="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- Department Navigation -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-8 text-center">Select a Department</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+                    <!-- English Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="english">
+                        <div class="department-icon english">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">English</h4>
+                    </div>
+                    
+                    <!-- Math Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="math">
+                        <div class="department-icon math">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Mathematics</h4>
+                    </div>
+                    
+                    <!-- Biology Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="biology">
+                        <div class="department-icon biology">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Biology</h4>
+                    </div>
+                    
+                    <!-- Chemistry Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="chemistry">
+                        <div class="department-icon chemistry">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Chemistry</h4>
+                    </div>
+                    
+                    <!-- Physics Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="physics">
+                        <div class="department-icon physics">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Physics</h4>
+                    </div>
+                    
+                    <!-- Economic Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="economic">
+                        <div class="department-icon economic">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Economics</h4>
+                    </div>
+                    
+                    <!-- History Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="history">
+                        <div class="department-icon history">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">History</h4>
+                    </div>
+                    
+                    <!-- Geography Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="geography">
+                        <div class="department-icon geography">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Geography</h4>
+                    </div>
+                    
+                    <!-- IT Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="it">
+                        <div class="department-icon it">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">IT</h4>
+                    </div>
+                    
+                    <!-- Amharic Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="amharic">
+                        <div class="department-icon amharic">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Amharic</h4>
+                    </div>
+                    
+                    <!-- HPE Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="hpe">
+                        <div class="department-icon hpe">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">HPE</h4>
+                    </div>
+                    
+                    <!-- Civic Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="civic">
+                        <div class="department-icon civic">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Civic</h4>
+                    </div>
+                    
+                    <!-- Agriculture Department -->
+                    <div class="department-card bg-white p-5 rounded-xl shadow-lg text-center" data-department="agriculture">
+                        <div class="department-icon agriculture">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Agriculture</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">School News & Blogs</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Stay updated with the latest happenings, achievements, and events at Worabe Secondary School</p>
+                <div class="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- News Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active" data-filter="all">All News</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="achievements">Achievements</button>
+                <button class="filter-btn" data-filter="announcements">Announcements</button>
+            </div>
+            
+            <!-- News Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="newsGrid">
+                <!-- News Item 1 -->
+                <div class="news-card" data-category="academic">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Science Fair Winners" 
+                             class="news-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-academic">Academic</span>
+                            <span class="news-date">May 15, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Students Excel at Regional Science Fair</h3>
+                        <p class="text-gray-600 mb-4">Our students showcased innovative projects at the annual Regional Science Fair, bringing home three awards for their outstanding work in renewable energy research.</p>
+                        <a href="#" class="read-more-news" data-news="1">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News Item 2 -->
+                <div class="news-card" data-category="events">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Annual Cultural Day" 
+                             class="news-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-events">Events</span>
+                            <span class="news-date">April 28, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Annual Cultural Day Celebrates Diversity</h3>
+                        <p class="text-gray-600 mb-4">Our school came alive with colors, music, and dance during the Annual Cultural Day celebration. Students showcased traditional attire, food, and performances from various Ethiopian regions.</p>
+                        <a href="#" class="read-more-news" data-news="2">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News Item 3 -->
+                <div class="news-card" data-category="sports">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Football Championship" 
+                             class="news-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-sports">Sports</span>
+                            <span class="news-date">April 12, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Football Team Wins Regional Championship</h3>
+                        <p class="text-gray-600 mb-4">Our school's football team emerged victorious in the Regional High School Championship after an intense final match. The team displayed exceptional skill and sportsmanship throughout the tournament.</p>
+                        <a href="#" class="read-more-news" data-news="3">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News Item 4 -->
+                <div class="news-card" data-category="achievements">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Scholarship Awards" 
+                             class="news-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-achievements">Achievements</span>
+                            <span class="news-date">March 30, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">15 Students Awarded University Scholarships</h3>
+                        <p class="text-gray-600 mb-4">We are proud to announce that 15 of our graduating students have received full scholarships to prestigious universities both in Ethiopia and abroad for their outstanding academic performance.</p>
+                        <a href="#" class="read-more-news" data-news="4">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News Item 5 -->
+                <div class="news-card" data-category="announcements">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="New Library" 
+                             class="news-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-announcements">Announcements</span>
+                            <span class="news-date">March 15, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">New Digital Library Inaugurated</h3>
+                        <p class="text-gray-600 mb-4">Our school has inaugurated a state-of-the-art digital library with over 5,000 books and access to online academic resources. The facility will enhance our students' learning experience.</p>
+                        <a href="#" class="read-more-news" data-news="5">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- News Item 6 -->
+                <div class="news-card" data-category="academic">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Math Competition" 
+                             class="news-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-academic">Academic</span>
+                            <span class="news-date">February 28, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Math Team Places Second in National Olympiad</h3>
+                        <p class="text-gray-600 mb-4">Our mathematics team achieved an impressive second place in the National Mathematics Olympiad, competing against 50 schools from across the country.</p>
+                        <a href="#" class="read-more-news" data-news="6">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    Load More News
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - IMPROVED -->
+    <section id="gallery" class="gallery-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">School Gallery</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore moments from campus life, events, achievements, and student activities</p>
+                <div class="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- Gallery Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="gallery-filter-btn active" data-filter="all">All Photos</button>
+                <button class="gallery-filter-btn" data-filter="academic">Academic</button>
+                <button class="gallery-filter-btn" data-filter="events">Events</button>
+                <button class="gallery-filter-btn" data-filter="sports">Sports</button>
+                <button class="gallery-filter-btn" data-filter="campus">Campus</button>
+                <button class="gallery-filter-btn" data-filter="student-life">Student Life</button>
+                <button class="gallery-filter-btn" data-filter="achievements">Achievements</button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="masonry-grid" id="galleryGrid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item masonry-item tall" data-category="academic">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Science Laboratory" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-academic">Academic</span>
+                            <h3 class="gallery-title">Science Laboratory Session</h3>
+                            <p class="gallery-date">May 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item masonry-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Cultural Day Performance" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-events">Events</span>
+                            <h3 class="gallery-title">Cultural Day Celebrations</h3>
+                            <p class="gallery-date">April 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item masonry-item wide" data-category="sports">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Football Championship" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-sports">Sports</span>
+                            <h3 class="gallery-title">Regional Football Champions</h3>
+                            <p class="gallery-date">April 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item masonry-item" data-category="campus">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="School Campus" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-campus">Campus</span>
+                            <h3 class="gallery-title">Main Campus Building</h3>
+                            <p class="gallery-date">March 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item masonry-item tall" data-category="student-life">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Student Discussion" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-student-life">Student Life</span>
+                            <h3 class="gallery-title">Group Study Session</h3>
+                            <p class="gallery-date">March 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item masonry-item" data-category="achievements">
+                    <img src="https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Award Ceremony" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-achievements">Achievements</span>
+                            <h3 class="gallery-title">Scholarship Award Ceremony</h3>
+                            <p class="gallery-date">February 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item masonry-item" data-category="academic">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Math Class" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-academic">Academic</span>
+                            <h3 class="gallery-title">Advanced Mathematics Class</h3>
+                            <p class="gallery-date">February 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item masonry-item wide" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Graduation Ceremony" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-events">Events</span>
+                            <h3 class="gallery-title">Annual Graduation Ceremony</h3>
+                            <p class="gallery-date">January 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 9 -->
+                <div class="gallery-item masonry-item" data-category="sports">
+                    <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Basketball Game" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-sports">Sports</span>
+                            <h3 class="gallery-title">Inter-Class Basketball Tournament</h3>
+                            <p class="gallery-date">December 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 10 -->
+                <div class="gallery-item masonry-item tall" data-category="student-life">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Art Class" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-student-life">Student Life</span>
+                            <h3 class="gallery-title">Art & Creativity Workshop</h3>
+                            <p class="gallery-date">November 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 11 -->
+                <div class="gallery-item masonry-item" data-category="campus">
+                    <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Library" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-campus">Campus</span>
+                            <h3 class="gallery-title">School Library Interior</h3>
+                            <p class="gallery-date">October 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 12 -->
+                <div class="gallery-item masonry-item" data-category="achievements">
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c0889dd6d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Science Fair" 
+                         class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category category-achievements">Achievements</span>
+                            <h3 class="gallery-title">Science Fair Project Display</h3>
+                            <p class="gallery-date">September 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    Load More Photos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Find answers to common questions about Worabe Secondary School</p>
+                <div class="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the admission requirements for Worabe Secondary School?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Admission to Worabe Secondary School requires completion of primary education with satisfactory academic performance. Applicants must submit their primary school transcripts, a completed application form, and attend an entrance examination. We also consider extracurricular activities and personal interviews for final selection.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the school's academic calendar?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Our academic year runs from September to June, divided into two semesters. The first semester runs from September to January, followed by a short break, and the second semester from February to June. We observe all national holidays and have breaks for Christmas, Easter, and summer vacation.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does the school offer boarding facilities?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Yes, we offer boarding facilities for both male and female students. Our boarding houses are supervised by experienced house parents and provide a safe, supportive environment. Facilities include comfortable dormitories, study areas, recreational spaces, and nutritious meals prepared in our school kitchen.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What extracurricular activities are available?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">We offer a wide range of extracurricular activities including sports (football, basketball, athletics), arts (music, drama, visual arts), academic clubs (science club, debate team, math club), and community service programs. Students are encouraged to participate in at least one activity to develop their talents and interests.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the school support students with learning difficulties?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">We have a dedicated learning support department that provides individualized assistance to students with learning difficulties. This includes specialized tutoring, modified learning materials, and accommodations during assessments. Our teachers are trained to identify and support diverse learning needs in the classroom.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What career guidance services are available?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Our career guidance program includes individual counseling, career assessment tests, university and college information sessions, and guidance on course selection. We also organize career fairs and invite professionals from various fields to share their experiences with students.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there scholarship opportunities available?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Yes, we offer scholarships based on academic merit, financial need, and special talents. These include full and partial scholarships. Applications are reviewed annually, and students must maintain certain academic standards to continue receiving scholarship support.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can parents get involved in school activities?</span>
+                        <i class="fas fa-chevron-down faq-icon ml-auto"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Parents are encouraged to join our Parent-Teacher Association (PTA), attend school events, volunteer for activities, and participate in parent-teacher conferences. We also welcome parent input through surveys and suggestion boxes to continuously improve our school community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section - IMPROVED -->
+    <section id="contact" class="contact-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get in touch with Worabe Secondary School. We're here to answer your questions and provide information.</p>
+                <div class="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Get In Touch</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Address -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon bg-blue-500">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Address</h4>
+                            <p class="text-gray-600">Worabe Town, Silte Zone<br>Southern Nations, Nationalities, and Peoples' Region<br>Ethiopia</p>
+                        </div>
+                        
+                        <!-- Phone -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon bg-green-500">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Phone</h4>
+                            <p class="text-gray-600">+251 46 123 4567<br>+251 91 234 5678</p>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon bg-purple-500">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Email</h4>
+                            <p class="text-gray-600">info@worabesecondary.edu.et<br>admissions@worabesecondary.edu.et</p>
+                        </div>
+                        
+                        <!-- Hours -->
+                        <div class="contact-info-card">
+                            <div class="contact-icon bg-orange-500">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">Office Hours</h4>
+                            <p class="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Map -->
+                    <div class="mt-8 bg-white rounded-xl p-6 shadow-lg">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-4">Find Us</h4>
+                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                            <p class="text-gray-500">Interactive Map of Worabe Secondary School Location</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" id="firstName" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" id="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <select id="subject" class="form-input" required>
+                                <option value="">Select a subject</option>
+                                <option value="admission">Admission Inquiry</option>
+                                <option value="academic">Academic Programs</option>
+                                <option value="facilities">School Facilities</option>
+                                <option value="events">Events Information</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" class="form-input form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- School Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Worabe Secondary School</h3>
+                    <p class="text-gray-300 mb-4">Providing quality education since 1985. Shaping future leaders through academic excellence and character development.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#staff" class="text-gray-300 hover:text-white transition-colors">Staff</a></li>
+                        <li><a href="#news" class="text-gray-300 hover:text-white transition-colors">News</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span class="text-gray-300">Worabe Town, Silte Zone, Ethiopia</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-blue-400"></i>
+                            <span class="text-gray-300">+251 46 123 4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-blue-400"></i>
+                            <span class="text-gray-300">info@worabesecondary.edu.et</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-300 mb-4">Subscribe to our newsletter to receive updates about school events and news.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg text-gray-800 w-full focus:outline-none">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Worabe Secondary School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Department Modal -->
+    <div class="department-modal" id="departmentModal">
+        <div class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content" id="modalContent">
+            <!-- Content will be loaded here dynamically -->
+        </div>
+    </div>
+
+    <!-- News Modal -->
+    <div class="news-modal" id="newsModal">
+        <div class="close-modal" id="closeNewsModal">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content" id="newsModalContent">
+            <!-- Content will be loaded here dynamically -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <div class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        
+        <div class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="lightbox-content">
+            <div class="lightbox-counter" id="lightboxCounter"></div>
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <span id="lightboxCategory" class="gallery-category"></span>
+                <h3 id="lightboxTitle" class="text-xl font-bold text-gray-800 mb-2"></h3>
+                <p id="lightboxDate" class="text-gray-600"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Department data
+        const departmentData = {
+            english: {
+                title: "English Department",
+                description: "Our English Department is dedicated to developing students' communication skills, critical thinking, and appreciation for literature. We offer a comprehensive curriculum that covers grammar, composition, literature analysis, and public speaking.",
+                image: "https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Sarah Johnson", role: "Department Head" },
+                    { name: "Mr. Michael Brown", role: "Literature Specialist" },
+                    { name: "Ms. Emily Davis", role: "Writing Instructor" },
+                    { name: "Mr. Robert Wilson", role: "Grammar & Composition" }
+                ],
+                highlights: [
+                    "Annual Literary Festival",
+                    "Creative Writing Club",
+                    "Debate and Public Speaking Competitions",
+                    "Author Visits and Workshops"
+                ]
+            },
+            math: {
+                title: "Mathematics Department",
+                description: "Our Mathematics Department focuses on developing logical thinking, problem-solving skills, and mathematical reasoning. We offer courses from basic arithmetic to advanced calculus and statistics.",
+                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. James Miller", role: "Department Head" },
+                    { name: "Ms. Patricia Lee", role: "Calculus Specialist" },
+                    { name: "Mr. David Chen", role: "Algebra & Geometry" },
+                    { name: "Dr. Maria Rodriguez", role: "Statistics" }
+                ],
+                highlights: [
+                    "Math Olympiad Team",
+                    "Annual Math Fair",
+                    "Advanced Placement Courses",
+                    "Peer Tutoring Program"
+                ]
+            },
+            biology: {
+                title: "Biology Department",
+                description: "Our Biology Department explores the wonders of life from microscopic organisms to complex ecosystems. We provide hands-on laboratory experiences and field studies to enhance understanding of biological concepts.",
+                image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Lisa Thompson", role: "Department Head" },
+                    { name: "Mr. Kevin Adams", role: "Molecular Biology" },
+                    { name: "Dr. Susan Park", role: "Ecology & Environmental Science" },
+                    { name: "Ms. Rachel Green", role: "Human Anatomy" }
+                ],
+                highlights: [
+                    "State-of-the-art laboratory facilities",
+                    "Field trips to ecological reserves",
+                    "Science Research Program",
+                    "Partnerships with local universities"
+                ]
+            },
+            chemistry: {
+                title: "Chemistry Department",
+                description: "Our Chemistry Department provides students with a deep understanding of matter and its transformations. Through hands-on experiments and theoretical study, students explore the fundamental principles of chemistry.",
+                image: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Robert Kim", role: "Department Head" },
+                    { name: "Ms. Jennifer White", role: "Organic Chemistry" },
+                    { name: "Mr. Thomas Clark", role: "Inorganic Chemistry" },
+                    { name: "Dr. Amanda Lewis", role: "Analytical Chemistry" }
+                ],
+                highlights: [
+                    "Modern chemistry laboratory",
+                    "Annual Science Exhibition",
+                    "Chemistry Olympiad participation",
+                    "Industry partnerships for internships"
+                ]
+            },
+            physics: {
+                title: "Physics Department",
+                description: "Our Physics Department explores the fundamental laws of the universe, from quantum mechanics to cosmology. Students engage in practical experiments and theoretical problem-solving.",
+                image: "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Mark Robinson", role: "Department Head" },
+                    { name: "Ms. Linda Garcia", role: "Quantum Physics" },
+                    { name: "Mr. Brian Taylor", role: "Mechanics & Thermodynamics" },
+                    { name: "Dr. Karen Martinez", role: "Astrophysics" }
+                ],
+                highlights: [
+                    "Advanced physics laboratory",
+                    "Annual Physics Fair",
+                    "Telescope for astronomical observations",
+                    "Participation in national physics competitions"
+                ]
+            },
+            economic: {
+                title: "Economics Department",
+                description: "Our Economics Department provides students with an understanding of economic principles, market dynamics, and financial literacy. We explore both micro and macroeconomic concepts.",
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Steven Wright", role: "Department Head" },
+                    { name: "Ms. Angela Moore", role: "Microeconomics" },
+                    { name: "Mr. Christopher Hall", role: "Macroeconomics" },
+                    { name: "Dr. Michelle King", role: "Development Economics" }
+                ],
+                highlights: [
+                    "Student Investment Club",
+                    "Annual Economics Symposium",
+                    "Guest lectures from industry experts",
+                    "Model United Nations participation"
+                ]
+            },
+            history: {
+                title: "History Department",
+                description: "Our History Department helps students understand the past to make sense of the present. We explore world civilizations, historical events, and their impact on contemporary society.",
+                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Patricia Scott", role: "Department Head" },
+                    { name: "Mr. Daniel Young", role: "World History" },
+                    { name: "Ms. Barbara Allen", role: "African History" },
+                    { name: "Dr. Kevin Walker", role: "Modern History" }
+                ],
+                highlights: [
+                    "Historical research projects",
+                    "Museum field trips",
+                    "Oral history documentation",
+                    "History Club activities"
+                ]
+            },
+            geography: {
+                title: "Geography Department",
+                description: "Our Geography Department explores the relationship between people and their environments. Students study physical landscapes, human societies, and geographic information systems.",
+                image: "https://images.unsplash.com/photo-1526778548025-fa2ec9e64e7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Nancy Adams", role: "Department Head" },
+                    { name: "Mr. Jason Roberts", role: "Physical Geography" },
+                    { name: "Ms. Samantha Evans", role: "Human Geography" },
+                    { name: "Dr. Timothy Phillips", role: "GIS Specialist" }
+                ],
+                highlights: [
+                    "Geographic Information Systems lab",
+                    "Field mapping exercises",
+                    "Environmental conservation projects",
+                    "Geography Bee competition"
+                ]
+            },
+            it: {
+                title: "Information Technology Department",
+                description: "Our IT Department prepares students for the digital age with courses in programming, web development, networking, and cybersecurity. We emphasize both theoretical knowledge and practical skills.",
+                image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Brian Carter", role: "Department Head" },
+                    { name: "Ms. Jessica Hill", role: "Programming" },
+                    { name: "Mr. Ryan Green", role: "Web Development" },
+                    { name: "Dr. Amanda Wright", role: "Cybersecurity" }
+                ],
+                highlights: [
+                    "Computer programming lab",
+                    "Annual Hackathon event",
+                    "Robotics club",
+                    "Industry certification preparation"
+                ]
+            },
+            amharic: {
+                title: "Amharic Department",
+                description: "Our Amharic Department is dedicated to preserving and promoting Ethiopian language and culture. Students develop proficiency in reading, writing, and speaking Amharic while exploring Ethiopian literature.",
+                image: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Alemayehu Tekle", role: "Department Head" },
+                    { name: "Ms. Selamawit Abebe", role: "Language & Grammar" },
+                    { name: "Mr. Getachew Mekonnen", role: "Literature" },
+                    { name: "Dr. Tigist Haile", role: "Cultural Studies" }
+                ],
+                highlights: [
+                    "Amharic poetry competitions",
+                    "Cultural festival participation",
+                    "Traditional storytelling events",
+                    "Ethiopian literature library"
+                ]
+            },
+            hpe: {
+                title: "Health & Physical Education Department",
+                description: "Our HPE Department promotes physical fitness, health awareness, and sportsmanship. We offer a variety of sports and activities while teaching students about healthy lifestyle choices.",
+                image: "https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Mr. Samuel Bekele", role: "Department Head" },
+                    { name: "Ms. Hanna Girma", role: "Sports Coach" },
+                    { name: "Mr. Yonas Tadesse", role: "Fitness Instructor" },
+                    { name: "Dr. Marta Assefa", role: "Health Education" }
+                ],
+                highlights: [
+                    "Annual sports tournament",
+                    "Fitness assessment programs",
+                    "Nutrition workshops",
+                    "Intramural sports leagues"
+                ]
+            },
+            civic: {
+                title: "Civic Education Department",
+                description: "Our Civic Education Department prepares students for responsible citizenship. We explore government structures, civic rights and responsibilities, and community engagement.",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Solomon Getahun", role: "Department Head" },
+                    { name: "Ms. Bethlehem Tesfaye", role: "Ethiopian Government" },
+                    { name: "Mr. Daniel Assefa", role: "Human Rights" },
+                    { name: "Dr. Ruth Mengistu", role: "Community Development" }
+                ],
+                highlights: [
+                    "Student government participation",
+                    "Community service projects",
+                    "Model parliament simulations",
+                    "Civic leadership workshops"
+                ]
+            },
+            agriculture: {
+                title: "Agriculture Department",
+                description: "Our Agriculture Department provides practical knowledge about farming techniques, crop production, and sustainable agriculture. Students gain hands-on experience in our school garden and farm.",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                faculty: [
+                    { name: "Dr. Tewodros Mulugeta", role: "Department Head" },
+                    { name: "Ms. Genet Abate", role: "Crop Science" },
+                    { name: "Mr. Asrat Demissie", role: "Animal Husbandry" },
+                    { name: "Dr. Selamawit Hailu", role: "Agricultural Economics" }
+                ],
+                highlights: [
+                    "School garden project",
+                    "Agricultural field trips",
+                    "Sustainable farming practices",
+                    "Partnership with local farmers"
+                ]
+            }
+        };
+
+        // News data
+        const newsData = {
+            1: {
+                title: "Students Excel at Regional Science Fair",
+                category: "Academic",
+                date: "May 15, 2023",
+                image: "https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p class="text-gray-600 mb-4">Our students showcased innovative projects at the annual Regional Science Fair, bringing home three awards for their outstanding work in renewable energy research.</p>
+                    
+                    <p class="text-gray-600 mb-4">The team of Grade 11 students developed a prototype for a low-cost solar water purification system that could potentially benefit rural communities with limited access to clean water. Their project impressed judges with its practical application and thorough scientific methodology.</p>
+                    
+                    <p class="text-gray-600 mb-4">Another group focused on biofuel production from agricultural waste, demonstrating how schools could potentially generate their own energy while reducing environmental impact. Their research paper has been selected for publication in the National Youth Science Journal.</p>
+                    
+                    <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Awards Received</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                        <li>First Place in Environmental Science category</li>
+                        <li>Innovation Award for Practical Application</li>
+                        <li>Special Recognition for Community Impact</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">The science fair attracted participation from 35 schools across the region, making our students' achievements particularly noteworthy. The winning teams will represent our region at the National Science Fair next month.</p>
+                `
+            },
+            2: {
+                title: "Annual Cultural Day Celebrates Diversity",
+                category: "Events",
+                date: "April 28, 2023",
+                image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p class="text-gray-600 mb-4">Our school came alive with colors, music, and dance during the Annual Cultural Day celebration. Students showcased traditional attire, food, and performances from various Ethiopian regions.</p>
+                    
+                    <p class="text-gray-600 mb-4">The event featured vibrant displays representing the diverse cultures of Ethiopia, with students dressed in traditional clothing from Oromia, Amhara, Tigray, SNNPR, and other regions. Each class created a cultural booth showcasing artifacts, traditional crafts, and information about different Ethiopian cultures.</p>
+                    
+                    <p class="text-gray-600 mb-4">The highlight of the day was the cultural performance competition, where student groups presented traditional dances, songs, and skits. The Grade 10 students won first place for their authentic rendition of the Gurage cultural dance, complete with traditional instruments and costumes.</p>
+                    
+                    <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Event Highlights</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                        <li>Traditional fashion show featuring attire from 9 Ethiopian regions</li>
+                        <li>Cultural food fair with authentic dishes prepared by students and parents</li>
+                        <li>Art exhibition showcasing student artwork inspired by Ethiopian culture</li>
+                        <li>Traditional games and activities for all age groups</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">The Cultural Day celebration reinforces our school's commitment to promoting cultural understanding and appreciation among our students, preparing them to be respectful global citizens.</p>
+                `
+            },
+            3: {
+                title: "Football Team Wins Regional Championship",
+                category: "Sports",
+                date: "April 12, 2023",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p class="text-gray-600 mb-4">Our school's football team emerged victorious in the Regional High School Championship after an intense final match. The team displayed exceptional skill and sportsmanship throughout the tournament.</p>
+                    
+                    <p class="text-gray-600 mb-4">The championship match against our rivals from Addis Ababa Secondary School ended 2-1 in our favor, with both goals scored in the second half. Team captain Michael Tesfaye scored the winning goal in the 85th minute with a spectacular free kick from outside the penalty box.</p>
+                    
+                    <p class="text-gray-600 mb-4">Our goalkeeper, Samuel Bekele, was named Player of the Tournament for his outstanding performance, including two penalty saves during the semifinal match. The defense line, led by vice-captain Hanna Girma, conceded only three goals throughout the entire tournament.</p>
+                    
+                    <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Tournament Journey</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                        <li>Group Stage: 3 wins, 1 draw</li>
+                        <li>Quarterfinal: 2-0 victory against Hawassa High</li>
+                        <li>Semifinal: 1-0 victory after penalty shootout</li>
+                        <li>Final: 2-1 victory against Addis Ababa Secondary</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">This is the third time our school has won the regional championship in the past decade. The team will now represent our region in the National High School Football Championship next month.</p>
+                `
+            },
+            4: {
+                title: "15 Students Awarded University Scholarships",
+                category: "Achievements",
+                date: "March 30, 2023",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p class="text-gray-600 mb-4">We are proud to announce that 15 of our graduating students have received full scholarships to prestigious universities both in Ethiopia and abroad for their outstanding academic performance.</p>
+                    
+                    <p class="text-gray-600 mb-4">The scholarships cover various fields including medicine, engineering, computer science, and business administration. Eight students received scholarships to Addis Ababa University, while three will be attending universities in the United States, two in Germany, and two in China.</p>
+                    
+                    <p class="text-gray-600 mb-4">Notable among these is Sara Mohammed, who received a full scholarship to Stanford University for Computer Science, becoming the first student from our school to be accepted to an Ivy League institution. Another standout is Daniel Assefa, who will be studying Mechanical Engineering at RWTH Aachen University in Germany.</p>
+                    
+                    <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Scholarship Highlights</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                        <li>5 full scholarships to Addis Ababa University</li>
+                        <li>3 partial scholarships to international universities</li>
+                        <li>7 specialized scholarships for STEM fields</li>
+                        <li>Total scholarship value exceeding $500,000</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">These achievements reflect the dedication of both our students and teachers, and the effectiveness of our academic programs in preparing students for higher education and successful careers.</p>
+                `
+            },
+            5: {
+                title: "New Digital Library Inaugurated",
+                category: "Announcements",
+                date: "March 15, 2023",
+                image: "https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p class="text-gray-600 mb-4">Our school has inaugurated a state-of-the-art digital library with over 5,000 books and access to online academic resources. The facility will enhance our students' learning experience.</p>
+                    
+                    <p class="text-gray-600 mb-4">The new library features modern reading areas, computer stations with internet access, and a multimedia room for educational videos and presentations. The collection includes both physical books and digital resources accessible through the school's online portal.</p>
+                    
+                    <p class="text-gray-600 mb-4">Through partnerships with educational organizations, our students now have access to international academic databases, e-books, and research journals. The library also offers quiet study spaces, group discussion rooms, and a dedicated area for faculty research.</p>
+                    
+                    <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Library Features</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                        <li>5,000+ physical books across all subjects</li>
+                        <li>Access to 10,000+ e-books and academic journals</li>
+                        <li>25 computer stations with high-speed internet</li>
+                        <li>Multimedia room with projection facilities</li>
+                        <li>Quiet study zones and group collaboration spaces</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">The library was funded through a combination of school funds, parent contributions, and a generous donation from the Worabe Alumni Association. It represents our commitment to providing modern educational resources to support student learning and research.</p>
+                `
+            },
+            6: {
+                title: "Math Team Places Second in National Olympiad",
+                category: "Academic",
+                date: "February 28, 2023",
+                image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p class="text-gray-600 mb-4">Our mathematics team achieved an impressive second place in the National Mathematics Olympiad, competing against 50 schools from across the country.</p>
+                    
+                    <p class="text-gray-600 mb-4">The team, consisting of four students from grades 10-12, competed in individual and team events covering advanced topics in algebra, geometry, number theory, and combinatorics. Team member Liya Getachew placed third individually in the senior category.</p>
+                    
+                    <p class="text-gray-600 mb-4">The competition, held at Addis Ababa University, tested students' problem-solving skills and mathematical reasoning through challenging problems that required creative thinking and deep mathematical understanding.</p>
+                    
+                    <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Team Performance</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                        <li>2nd place overall in team competition</li>
+                        <li>3rd place individual - Liya Getachew (Grade 12)</li>
+                        <li>5th place individual - Tomas Fekadu (Grade 11)</li>
+                        <li>Perfect scores in geometry and number theory sections</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">This achievement represents the highest placement our school has ever achieved in the National Mathematics Olympiad. The team was coached by Mr. Samuel Bekele, our head mathematics teacher, who has been preparing students for the competition through weekly training sessions since the beginning of the academic year.</p>
+                `
+            }
+        };
+
+        // Gallery data
+        const galleryData = [
+            {
+                id: 1,
+                title: "Science Laboratory Session",
+                category: "academic",
+                date: "May 2023",
+                image: "https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Students conducting experiments in our state-of-the-art science laboratory during a chemistry practical session."
+            },
+            {
+                id: 2,
+                title: "Cultural Day Celebrations",
+                category: "events",
+                date: "April 2023",
+                image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Vibrant performances during our annual Cultural Day celebration showcasing the diversity of Ethiopian traditions."
+            },
+            {
+                id: 3,
+                title: "Regional Football Champions",
+                category: "sports",
+                date: "April 2023",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Our school football team celebrating their victory in the Regional High School Championship tournament."
+            },
+            {
+                id: 4,
+                title: "Main Campus Building",
+                category: "campus",
+                date: "March 2023",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "The main administrative building of Worabe Secondary School, surrounded by beautiful gardens and walkways."
+            },
+            {
+                id: 5,
+                title: "Group Study Session",
+                category: "student-life",
+                date: "March 2023",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Students collaborating on a project during a group study session in the school library."
+            },
+            {
+                id: 6,
+                title: "Scholarship Award Ceremony",
+                category: "achievements",
+                date: "February 2023",
+                image: "https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Honoring students who received full scholarships to prestigious universities for their outstanding academic performance."
+            },
+            {
+                id: 7,
+                title: "Advanced Mathematics Class",
+                category: "academic",
+                date: "February 2023",
+                image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Students engaged in solving complex mathematical problems during an advanced mathematics class."
+            },
+            {
+                id: 8,
+                title: "Annual Graduation Ceremony",
+                category: "events",
+                date: "January 2023",
+                image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "The graduating class of 2023 during the annual graduation ceremony held in the school auditorium."
+            },
+            {
+                id: 9,
+                title: "Inter-Class Basketball Tournament",
+                category: "sports",
+                date: "December 2022",
+                image: "https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Exciting moments from the inter-class basketball tournament finals held in our school sports complex."
+            },
+            {
+                id: 10,
+                title: "Art & Creativity Workshop",
+                category: "student-life",
+                date: "November 2022",
+                image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Students expressing their creativity during an art workshop conducted by visiting artists."
+            },
+            {
+                id: 11,
+                title: "School Library Interior",
+                category: "campus",
+                date: "October 2022",
+                image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "The newly renovated school library with modern reading spaces and digital resources."
+            },
+            {
+                id: 12,
+                title: "Science Fair Project Display",
+                category: "achievements",
+                date: "September 2022",
+                image: "https://images.unsplash.com/photo-1551836026-d5c0889dd6d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                description: "Innovative student projects on display during the annual school science fair exhibition."
+            }
+        ];
+
+        // Initialize all functionality when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('slide-in-right');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // Close mobile menu when clicking on links
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' || e.target.closest('button')) {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // Scroll animation for elements
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        
+                        // Add bounce animation to stats when they come into view
+                        if (entry.target.querySelector('.pulse-animation')) {
+                            const stats = entry.target.querySelectorAll('.pulse-animation');
+                            stats.forEach((stat, index) => {
+                                setTimeout(() => {
+                                    stat.style.animation = 'pulse 2s infinite';
+                                }, index * 200);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all scroll animation elements
+            document.querySelectorAll('.scroll-up, .scroll-right, .scroll-left').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Read More button functionality
+            const readMoreBtn = document.getElementById('readMoreBtn');
+            const aboutText = document.getElementById('aboutText');
+            
+            if (readMoreBtn && aboutText) {
+                readMoreBtn.addEventListener('click', function() {
+                    if (aboutText.classList.contains('expanded')) {
+                        aboutText.classList.remove('expanded');
+                        readMoreBtn.textContent = 'Read More';
+                    } else {
+                        aboutText.classList.add('expanded');
+                        readMoreBtn.textContent = 'Read Less';
+                    }
+                });
+            }
+
+            // Navbar highlighting functionality
+            function highlightNavLink() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                // Highlight desktop nav links
+                navLinks.forEach(link => {
+                    link.classList.remove('active', 'text-blue-600', 'bg-blue-50');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.add('text-gray-700', 'hover:text-gray-900', 'hover:bg-gray-100');
+                    }
+                });
+                
+                // Highlight mobile nav links
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('text-blue-600', 'bg-blue-50');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('text-blue-600', 'bg-blue-50');
+                    }
+                });
+            }
+            
+            // Initial call and scroll event listener
+            window.addEventListener('scroll', highlightNavLink);
+            window.addEventListener('load', highlightNavLink);
+
+            // Department modal functionality
+            const departmentCards = document.querySelectorAll('.department-card');
+            const departmentModal = document.getElementById('departmentModal');
+            const modalContent = document.getElementById('modalContent');
+            const closeModal = document.getElementById('closeModal');
+            
+            // Function to show department modal
+            function showDepartmentModal(departmentName) {
+                const department = departmentData[departmentName];
+                
+                if (!department) return;
+                
+                // Create modal content
+                modalContent.innerHTML = `
+                    <div class="modal-header">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-2">${department.title}</h3>
+                        <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="md:flex gap-6">
+                            <div class="md:w-2/5 mb-6 md:mb-0">
+                                <img src="${department.image}" alt="${department.title}" class="w-full h-64 object-cover rounded-xl shadow-lg">
+                            </div>
+                            <div class="md:w-3/5">
+                                <p class="text-gray-600 mb-6 text-lg leading-relaxed">${department.description}</p>
+                                
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Faculty Members</h4>
+                                <div class="faculty-grid">
+                                    ${department.faculty.map(member => `
+                                        <div class="faculty-card">
+                                            <div class="faculty-name">${member.name}</div>
+                                            <div class="faculty-role">${member.role}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                
+                                <h4 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Program Highlights</h4>
+                                <div class="space-y-3">
+                                    ${department.highlights.map(highlight => `
+                                        <div class="highlight-item">
+                                            <div class="highlight-icon">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                            <span class="text-gray-700">${highlight}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Show modal
+                departmentModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Add click event to department cards
+            departmentCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const departmentName = this.dataset.department;
+                    showDepartmentModal(departmentName);
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                departmentModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside content
+            departmentModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && departmentModal.classList.contains('active')) {
+                    departmentModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // News functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const newsCards = document.querySelectorAll('.news-card');
+            const readMoreLinks = document.querySelectorAll('.read-more-news');
+            const newsModal = document.getElementById('newsModal');
+            const newsModalContent = document.getElementById('newsModalContent');
+            const closeNewsModal = document.getElementById('closeNewsModal');
+            
+            // Filter functionality
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active filter button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    // Filter news cards
+                    newsCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // News modal functionality
+            function showNewsModal(newsId) {
+                const news = newsData[newsId];
+                
+                if (!news) return;
+                
+                // Create modal content
+                newsModalContent.innerHTML = `
+                    <div class="modal-header">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="category-tag category-${news.category.toLowerCase()}">${news.category}</span>
+                            <span class="news-date">${news.date}</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-2">${news.title}</h3>
+                        <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-6">
+                            <img src="${news.image}" alt="${news.title}" class="w-full h-64 object-cover rounded-xl shadow-lg">
+                        </div>
+                        ${news.content}
+                    </div>
+                `;
+                
+                // Show modal
+                newsModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Add click event to read more links
+            readMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const newsId = this.dataset.news;
+                    showNewsModal(newsId);
+                });
+            });
+            
+            // Close modal
+            closeNewsModal.addEventListener('click', function() {
+                newsModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside content
+            newsModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && newsModal.classList.contains('active')) {
+                    newsModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Gallery functionality
+            const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxCategory = document.getElementById('lightboxCategory');
+            const lightboxDate = document.getElementById('lightboxDate');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+            
+            let currentImageIndex = 0;
+            let filteredGalleryData = [...galleryData];
+            
+            // Filter functionality
+            galleryFilterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active filter button
+                    galleryFilterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Update filtered data for lightbox navigation
+                    if (filter === 'all') {
+                        filteredGalleryData = [...galleryData];
+                    } else {
+                        filteredGalleryData = galleryData.filter(item => item.category === filter);
+                    }
+                });
+            });
+            
+            // Lightbox functionality
+            function openLightbox(index) {
+                currentImageIndex = index;
+                const item = filteredGalleryData[index];
+                
+                if (!item) return;
+                
+                lightboxImage.src = item.image;
+                lightboxImage.alt = item.title;
+                lightboxTitle.textContent = item.title;
+                lightboxDate.textContent = item.date;
+                lightboxCategory.textContent = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+                lightboxCategory.className = `gallery-category category-${item.category}`;
+                lightboxCounter.textContent = `${index + 1} / ${filteredGalleryData.length}`;
+                
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            function navigateLightbox(direction) {
+                if (direction === 'next') {
+                    currentImageIndex = (currentImageIndex + 1) % filteredGalleryData.length;
+                } else {
+                    currentImageIndex = (currentImageIndex - 1 + filteredGalleryData.length) % filteredGalleryData.length;
+                }
+                openLightbox(currentImageIndex);
+            }
+            
+            // Add click event to gallery items
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    if (category) {
+                        // Find index in filtered data
+                        const filteredIndex = filteredGalleryData.findIndex(
+                            dataItem => dataItem.category === category && 
+                            dataItem.title === this.querySelector('.gallery-title').textContent
+                        );
+                        
+                        if (filteredIndex !== -1) {
+                            openLightbox(filteredIndex);
+                        }
+                    }
+                });
+            });
+            
+            // Lightbox controls
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', () => navigateLightbox('prev'));
+            lightboxNext.addEventListener('click', () => navigateLightbox('next'));
+            
+            // Close lightbox when clicking outside content
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox('prev');
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox('next');
+                }
+            });
+
+            // FAQ functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current FAQ item
+                    item.classList.toggle('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.classList.toggle('active');
+                });
+            });
+
+            // Contact form functionality
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const formObject = Object.fromEntries(formData);
+                    
+                    // In a real application, you would send this data to a server
+                    console.log('Form submitted:', formObject);
+                    
+                    // Show success message
+                    alert('Thank you for your message! We will get back to you soon.');
+                    
+                    // Reset form
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
